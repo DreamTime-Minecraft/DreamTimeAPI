@@ -59,7 +59,7 @@ public class Database implements AutoCloseable
             for (Object arg : args)
                 statement.setObject(i++, arg);
             return statement.executeUpdate();
-        } catch (SQLException e) {
+        } catch (NullPointerException | SQLException e) {
             e.printStackTrace();
         }
         return 0;
@@ -76,6 +76,7 @@ public class Database implements AutoCloseable
             stmt.setObject(i++, arg);
         }
 
+        stmt.closeOnCompletion();
         return stmt.executeQuery();
     }
     private static Random random = new Random();
