@@ -1,5 +1,5 @@
 name: DreamTimeAPI
-version: 1.0.0
+version: ${project.version}
 main: ru.sgk.dreamtimeapi.DreamTimeAPIMain
 authors: [SteveGrKek]
 load: STARTUP
