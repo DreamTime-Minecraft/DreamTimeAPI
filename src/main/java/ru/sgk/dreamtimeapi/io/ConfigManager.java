@@ -17,7 +17,6 @@ public class ConfigManager
     public ConfigManager(JavaPlugin plugin)
     {
         this.plugin = plugin;
-        plugin.getLogger().info(plugin.getClass().getName());
         dataFolder = this.plugin.getDataFolder();
         loadMainConfig();
     }
