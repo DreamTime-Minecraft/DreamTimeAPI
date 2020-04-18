@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="DTAPI">
-    <output-path>$PROJECT_DIR$/../out/DreamTimeAPI</output-path>
-    <root id="archive" name="DTAPI.jar">
-      <element id="module-output" name="DreamTimeAPI" />
-    </root>
-  </artifact>
-</component>

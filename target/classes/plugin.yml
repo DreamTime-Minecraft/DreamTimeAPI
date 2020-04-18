@@ -1,5 +1,0 @@
-name: DreamTimeAPI
-version: 1.0-SNAPSHOT
-main: ru.sgk.dreamtimeapi.DreamTimeAPIMain
-authors: [SteveGrKek]
-load: STARTUP

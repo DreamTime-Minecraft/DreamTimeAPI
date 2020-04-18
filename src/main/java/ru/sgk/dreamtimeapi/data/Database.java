@@ -7,8 +7,6 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 import java.util.Random;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class Database implements AutoCloseable
 {
