@@ -7,7 +7,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.io.*;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-
+@Deprecated
 public class ConfigManager
 {
     private static final String MAIN_CONFIG_NAME = "config.yml";
