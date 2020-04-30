@@ -1,6 +1,7 @@
 package ru.sgk.dreamtimeapi.io;
 
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -17,6 +18,8 @@ public class ConfigWrapper {
     private final String folderName;
     private final String fileName;
     private String header;
+    private int saveCoolDown = 0;
+    private boolean configSaving = false;
 
     public ConfigWrapper(JavaPlugin plugin, String folderName, String fileName) {
         this.plugin = plugin;
@@ -52,7 +55,7 @@ public class ConfigWrapper {
         saveConfig();
     }
 
-    public void saveConfig()
+    public synchronized void forceSave()
     {
         if (config == null || configFile == null) return;
 
@@ -61,11 +64,31 @@ public class ConfigWrapper {
         } catch (IOException e) {
             plugin.getLogger().info(ChatColor.RED + "Could not save config to " + configFile);
             e.printStackTrace();
+        } finally {
+            // Отмечаем, что конфиг закончил сохранение
+            configSaving = false;
         }
 
     }
 
-    public void reloadConfig()
+    public void saveConfig()
+    {
+        if (config == null || configFile == null) return;
+
+        if (saveCoolDown == 0) {
+            forceSave();
+        } else {
+
+            // Начинаем сохранение конфига
+            if (!configSaving) {
+                Bukkit.getScheduler().runTaskLater(this.plugin, this::forceSave, saveCoolDown / 50);
+                // Пометка того, что конфиг ждёт сохранения
+                configSaving = true;
+            }
+        }
+    }
+
+    public synchronized void reloadConfig()
     {
         if (configFile != null) {
             if (folderName != null && !folderName.isEmpty()) {
@@ -75,5 +98,12 @@ public class ConfigWrapper {
             }
         }
         config = YamlConfiguration.loadConfiguration(configFile);
+    }
+
+    /**
+     * @param coolDown
+     */
+    public void setSaveCoolDown(int coolDown) {
+        this.saveCoolDown = coolDown;
     }
 }
