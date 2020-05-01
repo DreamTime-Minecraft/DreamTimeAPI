@@ -71,7 +71,7 @@ public class ConfigWrapper {
 
     }
 
-    public void saveConfig()
+    public synchronized void saveConfig()
     {
         if (config == null || configFile == null) return;
 
