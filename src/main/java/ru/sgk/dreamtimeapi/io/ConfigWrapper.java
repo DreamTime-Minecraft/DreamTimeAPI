@@ -90,7 +90,7 @@ public class ConfigWrapper {
 
     public synchronized void reloadConfig()
     {
-        if (configFile != null) {
+        if (configFile == null) {
             if (folderName != null && !folderName.isEmpty()) {
                 configFile = new File(plugin.getDataFolder() + File.separator + folderName, fileName);
             } else {

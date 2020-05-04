@@ -1,6 +1,5 @@
 package ru.sgk.dreamtimeapi.gui;
 
-import com.google.common.collect.Lists;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryCloseEvent;
@@ -11,23 +10,23 @@ import org.bukkit.inventory.ItemStack;
 import ru.sgk.dreamtimeapi.gui.handlers.GUIInventoryHandler;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.BiFunction;
-import java.util.function.UnaryOperator;
 
 public class GUIInventory {
     private Inventory inv;
     private List<GUIItem> items;
     private Map<String, GUIInventoryHandler> handlers = new ConcurrentHashMap<>();
     private BiFunction<String, Player, String>  placeholderFunction;
+    private String title;
     /**
      * @param title Название инвентаря
      * @param rows Количество строчек
      */
     public GUIInventory(String title, int rows) {
+        this.title = title;
         this.inv = Bukkit.createInventory(null, rows*9, title);
         Player p = null;
         items = new ArrayList<>();
@@ -93,7 +92,7 @@ public class GUIInventory {
     public void open(Player p)
     {
         updateItems();
-        Inventory inv = Bukkit.createInventory(null, this.inv.getSize());
+        Inventory inv = Bukkit.createInventory(null, this.inv.getSize(), this.title);
         for (GUIItem item : items) {
             inv.setItem(item.getIndex(), item.getItem().clone());
         }

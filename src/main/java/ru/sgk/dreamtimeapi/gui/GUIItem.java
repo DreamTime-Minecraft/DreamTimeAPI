@@ -99,12 +99,15 @@ public class GUIItem {
     public void setLore(List<String> lore)
     {
         ItemMeta meta = item.getItemMeta();
-        List<String> newLore = new ArrayList<>();
-        for (String s :lore)
-        {
-            newLore.add(ChatColor.RESET + s);
+        if (lore != null) {
+            List<String> newLore = new ArrayList<>();
+            for (String s : lore) {
+                newLore.add(ChatColor.RESET + s);
+            }
+            meta.setLore(newLore);
+        } else {
+            meta.setLore(null);
         }
-        meta.setLore(newLore);
         setItemMeta(meta);
     }
 
