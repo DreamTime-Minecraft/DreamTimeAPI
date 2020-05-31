@@ -30,7 +30,9 @@ import java.util.Map;
  *
  * mainConfig.setDefaults(map); // Устанавливаем мапу в нужное место <br>
  * mainConfig.loadConfig(null); //Грузим конфиг по новой
- * </code>
+ * </code> <br>
+ * в onDisable() пишем <br>
+ * <code>mainConfig.forseSave</code>
  */
 public class ConfigWrapper {
     private final JavaPlugin plugin;
