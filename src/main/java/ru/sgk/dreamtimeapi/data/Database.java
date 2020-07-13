@@ -7,6 +7,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 import java.util.Random;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class Database implements AutoCloseable
 {
@@ -115,7 +116,7 @@ public class Database implements AutoCloseable
     @Override
     public void close() throws Exception
     {
-        if (connection != null)
+        if (connection != null && !connection.isClosed())
             connection.close();
     }
 
