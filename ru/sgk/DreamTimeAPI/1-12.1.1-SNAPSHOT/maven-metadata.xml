@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata modelVersion="1.1.0">
+  <groupId>ru.sgk</groupId>
+  <artifactId>DreamTimeAPI</artifactId>
+  <version>1-12.1.1-SNAPSHOT</version>
+  <versioning>
+    <snapshot>
+      <timestamp>20200713.134600</timestamp>
+      <buildNumber>1</buildNumber>
+    </snapshot>
+    <lastUpdated>20200713134600</lastUpdated>
+    <snapshotVersions>
+      <snapshotVersion>
+        <extension>jar</extension>
+        <value>1-12.1.1-20200713.134600-1</value>
+        <updated>20200713134600</updated>
+      </snapshotVersion>
+      <snapshotVersion>
+        <extension>pom</extension>
+        <value>1-12.1.1-20200713.134600-1</value>
+        <updated>20200713134600</updated>
+      </snapshotVersion>
+    </snapshotVersions>
+  </versioning>
+</metadata>
