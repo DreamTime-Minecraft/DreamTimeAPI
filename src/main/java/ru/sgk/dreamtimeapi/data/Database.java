@@ -43,7 +43,7 @@ public class Database implements AutoCloseable
             if (connection == null || !connection.isValid(10))
             {
                 if (connection != null) connection.close();
-                this.connection = DriverManager.getConnection("jdbc:mysql://" + host + ":" + port + "/" + database + "?autoReconnect=true" + argString, login, password);
+                this.connection = DriverManager.getConnection("jdbc:mysql://" + host + ":" + port + "/" + database + "?useSSL=false&autoReconnect=true" + argString, login, password);
             }
         } catch (SQLException e) {
             e.printStackTrace();
