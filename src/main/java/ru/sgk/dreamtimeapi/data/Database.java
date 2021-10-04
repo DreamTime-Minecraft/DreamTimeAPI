@@ -7,6 +7,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 import java.util.Random;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class Database implements AutoCloseable
 {

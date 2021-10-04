@@ -11,6 +11,29 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 
+/**
+ * Use: <br>
+ *     Чтобы создать конфиг пишем <br>
+ * <code>mainConfig = new ConfigWrapper(plugin*, folderName*, fileName*);</code><br>
+ * <code>mainConfig.createNewFile(null); // Создам файл без хедера</code><br>
+ * Создаём мапу дефолт значений конфига:<br>
+ * <code>
+ * Map<String, Object> map = new HashMap<>(); <br>
+ * map.put("rewards.default.title", "&aDefault"); <br>
+ * map.put("rewards.default.permission", "dailyrewards.reward.default"); <br>
+ * map.put("rewards.default.cooldown", 1440); <br>
+ * map.put("rewards.default.time-unit", DRTimeUnit.MINUTE.toString()); <br>
+ * map.put("rewards.default.gui-char", 'A'); <br>
+ * map.put("rewards.default.gui-item", "DIRT"); <br>
+ * ...
+ * <br>
+ *
+ * mainConfig.setDefaults(map); // Устанавливаем мапу в нужное место <br>
+ * mainConfig.loadConfig(null); //Грузим конфиг по новой
+ * </code> <br>
+ * в onDisable() пишем <br>
+ * <code>mainConfig.forseSave</code>
+ */
 public class ConfigWrapper {
     private final JavaPlugin plugin;
     private FileConfiguration config;
